@@ -10,10 +10,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @RestController
@@ -70,14 +72,27 @@ public class MovieController {
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updatePost(@PathVariable("id") Integer id, @RequestBody MovieDto movieDto) {
-        if(!Objects.equals(id, movieDto.getId())){
-            throw new IllegalArgumentException("IDs don't match");
+    public ResponseEntity updatePost(@PathVariable("id") Integer id, @RequestBody MovieDto movieDto) {
+        if (!Objects.equals(id, movieDto.getId())) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("IDs don't match");
         }
         try {
-            movieService.saveMovie(movieDto);
+            MovieDto movieDto1 = movieService.getMovieById(id);
+            if (movieDto1 != null) {
+                movieService.saveMovie(movieDto);
+            }
         } catch (ParseException e) {
-            throw new IllegalArgumentException("Release date format not correct");
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("Release date format not correct");
+        } catch (NoSuchElementException e){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("Movie not found");
         }
+        return ResponseEntity
+                .status(HttpStatus.OK).body(null);
     }
 }

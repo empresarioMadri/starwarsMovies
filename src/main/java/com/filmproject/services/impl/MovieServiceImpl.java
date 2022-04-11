@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -32,7 +33,7 @@ public class MovieServiceImpl implements MovieService {
                 .collect(Collectors.toList());
     }
 
-    public MovieDto getMovieById(int id) {
+    public MovieDto getMovieById(int id) throws NoSuchElementException {
         Movie movie = movieRepository.findById(id).get();
         return convertToDto(movie);
     }
