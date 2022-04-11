@@ -1,8 +1,8 @@
-package com.practicapeliculas.practicapeliculas.services.impl;
+package com.filmproject.services.impl;
 
-import com.practicapeliculas.practicapeliculas.models.Movie;
-import com.practicapeliculas.practicapeliculas.repository.MovieRepository;
-import com.practicapeliculas.practicapeliculas.services.MicroService;
+import com.filmproject.models.Movie;
+import com.filmproject.repository.MovieRepository;
+import com.filmproject.services.MicroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

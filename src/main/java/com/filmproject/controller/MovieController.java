@@ -1,7 +1,7 @@
-package com.practicapeliculas.practicapeliculas.controller;
+package com.filmproject.controller;
 
-import com.practicapeliculas.practicapeliculas.models.Movie;
-import com.practicapeliculas.practicapeliculas.services.MicroService;
+import com.filmproject.models.Movie;
+import com.filmproject.services.MicroService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class MovieController {
     @Autowired
     private MicroService movieService;
 
-    @Operation (summary = "List alla movies")
+    @Operation (summary = "List all movies")
     @ApiResponses (value = {
             @ApiResponse (responseCode = "200", description = "Films found",
                     content = { @Content(mediaType = "application/json",
@@ -38,7 +39,7 @@ public class MovieController {
     private Movie getMovie(@PathVariable("id") int id) {
         return movieService.getMovieById(id);
     }
-    @Operation (summary = "Add Movies")
+    @Operation (summary = "Add Movie")
     @ApiResponses (value = {
             @ApiResponse (responseCode = "200", description = "Movie added correctly",
                     content = { @Content(mediaType = "application/json",

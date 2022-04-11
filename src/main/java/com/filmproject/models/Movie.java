@@ -1,4 +1,4 @@
-package com.practicapeliculas.practicapeliculas.models;
+package com.filmproject.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 @Setter
@@ -18,7 +19,7 @@ public class Movie {
     private String opening_crawl;
     private String director;
     private String producer;
-    private String release_date;
+    private Date release_date;
 
 
 }

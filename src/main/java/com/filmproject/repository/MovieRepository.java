@@ -1,6 +1,6 @@
-package com.practicapeliculas.practicapeliculas.repository;
+package com.filmproject.repository;
 
-import com.practicapeliculas.practicapeliculas.models.Movie;
+import com.filmproject.models.Movie;
 import org.springframework.data.repository.CrudRepository;
 
 public interface MovieRepository extends CrudRepository<Movie, Integer> {

@@ -1,13 +1,13 @@
-package com.practicapeliculas.practicapeliculas;
+package com.filmproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PracticaPeliculasApplication {
+public class FilmProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PracticaPeliculasApplication.class, args);
+		SpringApplication.run(FilmProjectApplication.class, args);
 	}
 
 }

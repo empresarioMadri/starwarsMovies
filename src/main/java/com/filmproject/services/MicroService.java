@@ -1,6 +1,6 @@
-package com.practicapeliculas.practicapeliculas.services;
+package com.filmproject.services;
 
-import com.practicapeliculas.practicapeliculas.models.Movie;
+import com.filmproject.models.Movie;
 
 import java.util.List;
 
