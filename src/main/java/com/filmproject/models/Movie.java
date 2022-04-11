@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Movie {
     @Id
-    private int id;
+    private Integer id;
     private String title;
     private String opening_crawl;
     private String director;
