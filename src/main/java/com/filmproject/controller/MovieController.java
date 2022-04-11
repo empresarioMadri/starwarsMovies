@@ -55,9 +55,16 @@ public class MovieController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    private MovieDto saveMovie(@RequestBody MovieDto movie) {
+    private ResponseEntity saveMovie(@RequestBody MovieDto movie) {
         try {
-            return movieService.saveMovie(movie);
+            MovieDto movieDto1 = movieService.getMovieById(movie.getId());
+            if (movieDto1 != null) {
+                return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body("Movie exists");
+            }
+            return ResponseEntity
+                    .status(HttpStatus.CREATED).body(movieService.saveMovie(movie));
         } catch (ParseException e) {
             throw new IllegalArgumentException("Release date format not correct");
         }
