@@ -40,6 +40,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public MovieDto saveMovie(MovieDto movieDto) throws ParseException {
         Movie movie = convertToEntity(movieDto);
+        movie = movieRepository.save(movie);
         return convertToDto(movie);
     }
 

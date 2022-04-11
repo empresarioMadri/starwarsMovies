@@ -50,7 +50,7 @@ public class MovieController {
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = MovieDto.class))})
     })
-    @PostMapping("/movies")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     private MovieDto saveMovie(@RequestBody MovieDto movie) {
@@ -70,7 +70,7 @@ public class MovieController {
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updatePost(@PathVariable("id") Long id, @RequestBody MovieDto movieDto) {
+    public void updatePost(@PathVariable("id") Integer id, @RequestBody MovieDto movieDto) {
         if(!Objects.equals(id, movieDto.getId())){
             throw new IllegalArgumentException("IDs don't match");
         }
