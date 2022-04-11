@@ -57,11 +57,10 @@ public class MovieController {
     @ResponseBody
     private ResponseEntity saveMovie(@RequestBody MovieDto movie) {
         try {
-            MovieDto movieDto1 = movieService.getMovieById(movie.getId());
-            if (movieDto1 != null) {
+            if (movie.getId() != null) {
                 return ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
-                        .body("Movie exists");
+                        .body("Id must be null");
             }
             return ResponseEntity
                     .status(HttpStatus.CREATED).body(movieService.saveMovie(movie));
