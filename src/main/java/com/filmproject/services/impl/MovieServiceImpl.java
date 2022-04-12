@@ -52,8 +52,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     private Movie convertToEntity(MovieDto movieDto) throws ParseException {
-        Movie movie = modelMapper.map(movieDto, Movie.class);
-        movie.setRelease_date(movieDto.getSubmissionDateConverted());
+        Movie movie = null;
+        try {
+            movie = modelMapper.map(movieDto, Movie.class);
+            movie.setRelease_date(movieDto.getSubmissionDateConverted());
+        }catch (Exception e){
+            throw new ParseException("",0);
+        }
         return movie;
     }
 }

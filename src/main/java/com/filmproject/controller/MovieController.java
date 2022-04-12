@@ -65,7 +65,9 @@ public class MovieController {
             return ResponseEntity
                     .status(HttpStatus.CREATED).body(movieService.saveMovie(movie));
         } catch (ParseException e) {
-            throw new IllegalArgumentException("Release date format not correct");
+                return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body("Release date format incorrect");
         }
     }
 
